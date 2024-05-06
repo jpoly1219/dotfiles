@@ -46,6 +46,12 @@ return {
         -- nix
         "rnix-lsp",
         -- scheme
+        -- haskell
+        "haskell-language-server",
+        "haskell-debug-adapter",
+        -- clojure
+        "clojure-lsp",
+        -- "cljfmt",
       })
     end,
   },
