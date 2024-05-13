@@ -55,7 +55,16 @@ return {
       })
     end,
   },
+  -- language servers not supported by mason
   {
     "reasonml-editor/vim-reason-plus",
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        racket_langserver = {},
+      },
+    },
   },
 }
