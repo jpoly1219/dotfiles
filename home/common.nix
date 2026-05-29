@@ -2,6 +2,9 @@
   imports = [
     ./modules/neovim.nix
     ./modules/tmux.nix
+    ./modules/ocaml.nix
+    ./modules/python.nix
+    ./modules/jvm.nix
   ];
 
   home.username = "jacob";
