@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     jdk21
     coursier
@@ -6,6 +7,6 @@
   ];
 
   home.sessionVariables = {
-    JAVA_HOME = "${pkgs.jdk21}";
+    JAVA_HOME = "${pkgs.jdk21}/lib/openjdk";
   };
 }

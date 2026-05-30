@@ -704,6 +704,8 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
+    nil_ls = {},
+    -- nixfmt = {},
     -- clangd = {},
     -- gopls = {},
     pyright = {},
@@ -782,7 +784,28 @@ do
   end
 
   vim.lsp.enable 'ocamllsp'
+  -- vim.lsp.enable 'nil_ls'
 end
+
+vim.pack.add { 'https://github.com/scalameta/nvim-metals' }
+
+vim.opt.shortmess:remove('F')
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'scala', 'sbt', 'java' },
+  group = vim.api.nvim_create_augroup('nvim-metals', { clear = true }),
+  callback = function()
+    local metals_config = require('metals').bare_config()
+
+    -- Integrate with existing LspAttach keymap setup
+    metals_config.on_attach = function(_, bufnr)
+      -- LspAttach autocmd already handles keymaps globally,
+      -- but metals needs initialize_or_attach called first
+    end
+
+    require('metals').initialize_or_attach(metals_config)
+  end,
+})
 
 -- ============================================================
 -- SECTION 6: FORMATTING
@@ -799,6 +822,7 @@ do
         ocaml = true,
         lua = true,
         python = true,
+        nix = true,
       }
       if enabled_filetypes[vim.bo[bufnr].filetype] then
         return { timeout_ms = 500 }

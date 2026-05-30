@@ -1,16 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./modules/neovim.nix
     ./modules/tmux.nix
     ./modules/ocaml.nix
     ./modules/python.nix
     ./modules/jvm.nix
+    ./modules/bash.nix # add this
   ];
 
   home.username = "jacob";
   home.homeDirectory = "/home/jacob";
   home.stateVersion = "24.05";
-  # home.enableNixpkgsReleaseCheck = false;
 
   programs.home-manager.enable = true;
 
@@ -19,5 +20,9 @@
     fd
     curl
     git
+  ];
+
+  home.sessionPath = [
+    "$HOME/.local/share/coursier/bin"
   ];
 }

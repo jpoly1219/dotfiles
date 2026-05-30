@@ -8,18 +8,21 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs =
+    { nixpkgs, home-manager, ... }:
     let
-      mkHome = system: extraModules:
+      mkHome =
+        system: extraModules:
         home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           modules = [ ./home/common.nix ] ++ extraModules;
         };
-    in {
+    in
+    {
       homeConfigurations = {
-        "jacob@wsl"    = mkHome "x86_64-linux"   [ ./home/linux.nix ];
-        "jacob@linux"  = mkHome "x86_64-linux"   [ ./home/linux.nix ];
-        "jacob@mac"    = mkHome "aarch64-darwin"  [ ./home/darwin.nix ];
+        "jacob@wsl" = mkHome "x86_64-linux" [ ./home/linux.nix ];
+        "jacob@linux" = mkHome "x86_64-linux" [ ./home/linux.nix ];
+        "jacob@mac" = mkHome "aarch64-darwin" [ ./home/darwin.nix ];
       };
     };
 }
