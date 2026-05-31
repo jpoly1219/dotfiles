@@ -11,10 +11,9 @@
     ./modules/go.nix
     ./modules/lean.nix
     ./modules/daikon.nix
+    ./modules/julia.nix
   ];
 
-  home.username = "jacob";
-  home.homeDirectory = "/home/jacob";
   home.stateVersion = "24.05";
 
   programs.home-manager.enable = true;

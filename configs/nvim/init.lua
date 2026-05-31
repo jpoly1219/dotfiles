@@ -709,6 +709,7 @@ do
     -- clangd = {},
     -- gopls = {},
     pyright = {},
+    julials = {},
     -- rust_analyzer = {},
     --
     -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -784,12 +785,30 @@ do
   end
 
   vim.lsp.enable 'ocamllsp'
-  -- vim.lsp.enable 'nil_ls'
+
+  vim.lsp.config('julials', {
+    cmd = {
+      'julia',
+      '--startup-file=no',
+      '--history-file=no',
+      '-e',
+      [[
+    import Pkg
+    Pkg.activate(; temp=false)
+    using LanguageServer
+    runserver()
+  ]],
+    },
+    filetypes = { 'julia' },
+    root_markers = { 'Project.toml', '.git' },
+  })
+
+  vim.lsp.enable 'julials'
 end
 
 vim.pack.add { 'https://github.com/scalameta/nvim-metals' }
 
-vim.opt.shortmess:remove('F')
+vim.opt.shortmess:remove 'F'
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'scala', 'sbt', 'java' },
