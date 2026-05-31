@@ -6,7 +6,11 @@
     ./modules/ocaml.nix
     ./modules/python.nix
     ./modules/jvm.nix
-    ./modules/bash.nix # add this
+    ./modules/bash.nix
+    ./modules/rust.nix
+    ./modules/go.nix
+    ./modules/lean.nix
+    ./modules/daikon.nix
   ];
 
   home.username = "jacob";
