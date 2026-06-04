@@ -12,6 +12,7 @@
     ./modules/lean.nix
     ./modules/daikon.nix
     ./modules/julia.nix
+    ./modules/javascript.nix
   ];
 
   home.stateVersion = "24.05";

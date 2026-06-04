@@ -110,7 +110,7 @@ do
   vim.o.number = true
   -- You can also add relative line numbers, to help with jumping.
   --  Experiment for yourself to see if you like it!
-  -- vim.o.relativenumber = true
+  vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
@@ -784,6 +784,10 @@ do
     vim.lsp.enable(name)
   end
 
+  -- vim.lsp.config('ocamllsp', {
+  --   cmd = { '/home/jacob/uci/sp26/se215/ocaml-lsp/_build/default/ocaml-lsp-server/bin/main.exe' },
+  -- })
+
   vim.lsp.enable 'ocamllsp'
 
   vim.lsp.config('julials', {
@@ -1034,6 +1038,8 @@ do
   -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
   require 'kickstart.plugins.bufferline'
   require 'kickstart.plugins.no-neck-pain'
+  require 'kickstart.plugins.tmux-navigator'
+  require 'kickstart.plugins.render-markdown'
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
