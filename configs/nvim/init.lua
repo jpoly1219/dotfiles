@@ -1040,6 +1040,7 @@ do
   require 'kickstart.plugins.no-neck-pain'
   require 'kickstart.plugins.tmux-navigator'
   require 'kickstart.plugins.render-markdown'
+  require 'kickstart.plugins.ocaml'
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
